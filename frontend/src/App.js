@@ -1,4 +1,6 @@
+import React from 'react';
 import './App.css';
+import AccountMenu from './components/AccountMenu';
 import useApplicationData from './Hooks/useEffect'
 const App = () => {
   const {
