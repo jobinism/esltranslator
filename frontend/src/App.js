@@ -2,15 +2,8 @@ import './App.css';
 import { useState, useEffect } from "react";
 import useApplicationData from './Hooks/useEffect';
 import * as React from 'react';
-import Button from '@mui/material/Button';
-import TextField from '@mui/material/TextField';
-import Dialog from '@mui/material/Dialog';
-import DialogActions from '@mui/material/DialogActions';
-import DialogContent from '@mui/material/DialogContent';
-import DialogContentText from '@mui/material/DialogContentText';
-import DialogTitle from '@mui/material/DialogTitle';
-import axios from "axios";
-import Dictaphone from './components/micTest';
+import Translate from './components/translate';
+
 
 const encodedParams = new URLSearchParams();
 encodedParams.append("f", "8khz_8bit_mono");
@@ -35,18 +28,11 @@ const options = {
 
 
 const App = () => {
-  const [open, setOpen] = React.useState(false);
   const [aud, setAud] = useState();
   // const reply = axios.request(options);
   // reply.then(res => {setAud(res.data)});
   // console.log(aud);
-  const handleClickOpen = () => {
-    setOpen(true);
-  };
-
-  const handleClose = () => {
-    setOpen(false);
-  };
+  
 
   const start = () => {
     document.getElementById('audio').play();
@@ -63,42 +49,7 @@ return (
   <h1> Users </h1>
   
   <ul> {userList} </ul>
-
-  <Button variant="outlined" onClick={handleClickOpen}>
-        Open form dialog
-      </Button>
-      <Dialog open={open} onClose={handleClose}>
-        <DialogTitle>Subscribe</DialogTitle>
-        <DialogContent>
-          <DialogContentText>
-            To subscribe to this website, please enter your email address here. We
-            will send updates occasionally.
-          </DialogContentText>
-          <TextField
-            autoFocus
-            margin="dense"
-            id="name"
-            label="Email Address"
-            type="email"
-            fullWidth
-            variant="standard"
-          />
-          <TextField
-            autoFocus
-            margin="dense"
-            id="pass"
-            label="Password"
-            type="password"
-            fullWidth
-            variant="standard"
-          />
-        </DialogContent>
-        <DialogActions>
-          <Button onClick={handleClose}>Cancel</Button>
-          <Button onClick={handleClose}>Subscribe</Button>
-        </DialogActions>
-      </Dialog>
-      <Dictaphone/>
+      <Translate />
 </div >
 );
 };
