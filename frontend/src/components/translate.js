@@ -22,17 +22,16 @@ const Translate = () => {
     },
     body: '[{"Text":""}]'
   });
-
+  // declaring state variables
   const [num, setNum] = useState(0);
   const [translatedText, setTranslatedText] = useState("");
   const [viewTranscript, setViewTranscript] = useState("");
 
-  // updates on each change to the transcript(when user is using speech to text)
+  // updates on each change to the transcript (when user is using speech to text)
   useEffect(() => {
     setViewTranscript(transcript);
     setTextToTranslate(prev => ({...prev, body:`[{"Text":"${transcript}"}]`}));
   }, [transcript]);
-
 
   useEffect(() => {
   
@@ -75,7 +74,6 @@ const Translate = () => {
     setViewTranscript(text);
     setTextToTranslate(prev => ({...prev, body:`[{"Text":"${text}"}]`}));
   }
-
 
   return (
     <div>

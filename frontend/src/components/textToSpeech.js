@@ -1,6 +1,8 @@
 import axios from 'axios';
 import { useState, useEffect } from "react";
 const TextToSpeech = (props) => {
+
+  // setting up the api request data
   const encodedParams = new URLSearchParams();
   encodedParams.append("f", "8khz_8bit_mono");
   encodedParams.append("c", "mp3");
@@ -9,7 +11,7 @@ const TextToSpeech = (props) => {
   encodedParams.append("src", `"${props.text}"`);
   encodedParams.append("b64", true);
 
-
+  // setting up the api request
   const options = {
     method: 'POST',
     url: 'https://voicerss-text-to-speech.p.rapidapi.com/',
@@ -22,27 +24,34 @@ const TextToSpeech = (props) => {
     data: encodedParams
   };
 
+  // declaring state variable
   const [aud, setAud] = useState();
+
   useEffect(() => {
+    // checks if there is text to convert into speech
     if (props.text) {
+      // requests audio file from api
       const reply = axios.request(options);
       reply.then(res => {
         setAud((res.data));
       });
-      console.log(aud);
     } else {
       setAud(null);
     } 
   }, [props.text]);
   
+  // function that plays the audio stored in the variable aud
   const play = () => {
     if(aud !== null) {
       const audio = new Audio(`${aud}`);
       audio.play();
     }
   }
+
   return(
     <button onClick={play}>Play</button>
   );
+
 }
+
 export default TextToSpeech;
