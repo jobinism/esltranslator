@@ -1,4 +1,4 @@
-import React from 'react';
+import * as React from 'react';
 import PropTypes from 'prop-types';
 
 import TextField from '@material-ui/core/TextField'
@@ -19,7 +19,7 @@ const styles = theme => ({
     button:{
         justifyContent:'center'
     },
-    languageListForm:{
+    languageListForm:{ 
         margin: '10px'
     }
 })
