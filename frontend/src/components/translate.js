@@ -1,7 +1,7 @@
 import React from 'react';
 import { useState, useEffect } from "react";
 import SpeechRecognition, { useSpeechRecognition } from 'react-speech-recognition';
-
+import TextToSpeech from './textToSpeech';
 const Translate = () => {
 
   // declaring variables needed for speech to text
@@ -17,7 +17,7 @@ const Translate = () => {
     method: 'POST',
     headers: {
       'content-type': 'application/json',
-      'X-RapidAPI-Key': '270b964d9emshc2f011e47a2ef4dp120ff0jsne6f5ac7f8bf5',
+      'X-RapidAPI-Key': process.env.REACT_APP_API_KEY,
       'X-RapidAPI-Host': 'microsoft-translator-text.p.rapidapi.com'
     },
     body: '[{"Text":""}]'
@@ -46,7 +46,6 @@ const Translate = () => {
           .then(response => {
             const translation = response[0].translations[0].text
             setTranslatedText(translation);
-            console.log(translation);
           })
           .catch(err => console.error(err));
       }, 500);
@@ -83,7 +82,9 @@ const Translate = () => {
       <p>Microphone: {listening ? 'on' : 'off'}</p>
       <button onClick={() => printText('ja')}>Start</button>
       <textarea id="translate" value={viewTranscript} onChange={(event) => setText(event.target.value)}/>
-      <textarea value={translatedText} />
+      <textarea value={translatedText}>
+      </textarea>
+      <TextToSpeech text={translatedText}/>
     </div>
   );
 };
