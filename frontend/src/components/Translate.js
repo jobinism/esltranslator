@@ -1,7 +1,12 @@
 import React from 'react';
 import { useState, useEffect } from "react";
 import SpeechRecognition, { useSpeechRecognition } from 'react-speech-recognition';
-import TextToSpeech from './textToSpeech';
+import TextToSpeech from './TextToSpeech';
+import Box from '@mui/material/Box';
+import InputLabel from '@mui/material/InputLabel';
+import MenuItem from '@mui/material/MenuItem';
+import FormControl from '@mui/material/FormControl';
+import Select from '@mui/material/Select';
 const Translate = () => {
 
   // declaring variables needed for speech to text
@@ -24,8 +29,10 @@ const Translate = () => {
   });
   // declaring state variables
   const [num, setNum] = useState(0);
+  const [language, setLanguage] = useState("");
   const [translatedText, setTranslatedText] = useState("");
   const [viewTranscript, setViewTranscript] = useState("");
+  const [speechLang, setSpeechLang] = useState('zh-HK');
 
   // updates on each change to the transcript (when user is using speech to text)
   useEffect(() => {
@@ -43,8 +50,10 @@ const Translate = () => {
         fetch(url, textToTranslate)
           .then(response => response.json())
           .then(response => {
-            const translation = response[0].translations[0].text
+            const translation = response[0].translations[0].text;
+            const language = response[0].detectedLanguage.language;
             setTranslatedText(translation);
+            setLanguage(language);
           })
           .catch(err => console.error(err));
       }, 500);
@@ -75,10 +84,38 @@ const Translate = () => {
     setTextToTranslate(prev => ({...prev, body:`[{"Text":"${text}"}]`}));
   }
 
+  // set the language for speech to text
+  const handleChange = (event) => {
+    setSpeechLang(event.target.value);
+  };
+
   return (
     <div>
       <p>Microphone: {listening ? 'on' : 'off'}</p>
-      <button onClick={() => printText('ja')}>Start</button>
+      <Box sx={{ minWidth: 20 }}>
+      <FormControl margin='normal' variant='standard'>
+        <InputLabel id="lang-label">Language</InputLabel>
+        <Select
+          labelId="lang-label"
+          id="lang-select"
+          value={speechLang}
+          label="Language"
+          onChange={handleChange}
+        >
+          <MenuItem value={"zh-HK"}>粵語</MenuItem>
+          <MenuItem value={"fr-FR"}>Français</MenuItem>
+          <MenuItem value={"de-DE"}>Deutsch</MenuItem>
+          <MenuItem value={"it-IT"}>Italiano</MenuItem>
+          <MenuItem value={"ja"}>日本語</MenuItem>
+          <MenuItem value={"ko"}>한국어</MenuItem>
+          <MenuItem value={"zh-CN"}>普通话</MenuItem>
+          <MenuItem value={"ru"}>русский</MenuItem>
+          <MenuItem value={"es-MX"}>Español</MenuItem>
+          
+        </Select>
+      </FormControl>
+    </Box>
+      <button onClick={() => printText(speechLang)}>Start</button>
       <textarea id="translate" value={viewTranscript} onChange={(event) => setText(event.target.value)}/>
       <textarea value={translatedText}>
       </textarea>
