@@ -5,6 +5,7 @@ import useApplicationData from './Hooks/useEffect';
 // import Translate from './components/translate';
 // import AccountMenu from './components/AccountMenu';
 import Register from './components/Register';
+import Log from './components/Log';
 
 
 const encodedParams = new URLSearchParams();
@@ -32,7 +33,7 @@ const App = () => {
   // const reply = axios.request(options);
   // reply.then(res => {setAud(res.data)});
   // console.log(aud);
-  
+
 
   const start = () => {
     document.getElementById('audio').play();
@@ -46,7 +47,7 @@ const App = () => {
 ));
 return (
 <div className="App" >
-  <Register />
+  <Log />
   <h1> Users </h1>
   
   <ul> {userList} </ul>
