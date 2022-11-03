@@ -17,6 +17,21 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', indexRouter);
 app.use('/api/users', usersRouter(dbHelpers));
- 
+
+app.post('/login', (req, res) => {
+  const email = req.body.email
+  const password = req.body.password
+  dbHelpers.getUserByEmail(email).then((user) => {
+    if (user.password === password) {
+      res.cookie('user_id', user.id)
+      res.json({first_name: user.first_name, last_name: user.last_name})
+    }
+    else {
+      res.status(401).json({error: 'Incorrect Credentials'})
+    }
+  })
+
+
+});
 
 module.exports = app;

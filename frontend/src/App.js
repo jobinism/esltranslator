@@ -47,11 +47,10 @@ const App = () => {
 ));
 return (
 <div className="App" >
-  <Log />
   <h1> Users </h1>
   
   <ul> {userList} </ul>
-      {/* <Translate /> */}
+      <Translate />
 </div >
 );
 };
