@@ -7,6 +7,7 @@ import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
+import Popup from './Popover';
 const Translate = () => {
 
   // declaring variables needed for speech to text
@@ -33,7 +34,28 @@ const Translate = () => {
   const [translatedText, setTranslatedText] = useState("");
   const [viewTranscript, setViewTranscript] = useState("");
   const [speechLang, setSpeechLang] = useState('zh-HK');
+  const [words, setWords] = useState([]);
 
+  useEffect(() => {
+    if (translatedText) {
+      let phrase = translatedText.split(' ');
+      const specialChars = /[ `!@#$%^&*()_+\-=\[\]{};:"\\|,.<>\/?~]/;
+      let key = -1;
+      const wordsWithPopover = phrase.map((word) => {
+        key += 1;
+        const check = specialChars.test(word);
+        let updatedWord = word;
+        if (check) {
+          const length = word.length-1;
+          updatedWord = word.slice(0,length)
+        }
+        return (
+          <Popup word={word} updatedWord={updatedWord} language={language} key={key}/>
+        );
+      });
+      setWords(wordsWithPopover);
+    }
+  }, [translatedText])
   // updates on each change to the transcript (when user is using speech to text)
   useEffect(() => {
     setViewTranscript(transcript);
@@ -120,6 +142,8 @@ const Translate = () => {
       <textarea value={translatedText}>
       </textarea>
       <TextToSpeech text={translatedText}/>
+      <br/>
+      <div>{words}</div>
     </div>
   );
 };
