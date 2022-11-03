@@ -6,15 +6,30 @@ const Popup = (props) => {
   // declaring state variables
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [definition, setDefinition] = React.useState(LoadingAnimation);
-  
+  const [synTrans, setSynTrans] = React.useState("");
+  const [synEng, setSynEng] = React.useState("");
   // urls for the fetch requests
-  const url =`https://api.dictionaryapi.dev/api/v2/entries/en/${props.word}`;
+  const url =`https://api.dictionaryapi.dev/api/v2/entries/en/${props.updatedWord}`;
   const transUrl = `https://microsoft-translator-text.p.rapidapi.com/translate?api-version=3.0&to%5B0%5D=${props.language}&textType=plain&profanityAction=NoAction`;
-
+  const synUrl = `https://api.datamuse.com/words?rel_syn=${props.updatedWord}&max=3`;
   // setting up fetch request for a word definition
   const options = {
     method: 'GET'
   };
+
+  // retrieves the synonyms of the given word 
+  React.useEffect(() => {
+    // fetches synonyms
+    fetch(synUrl, options)
+    .then((response) => response.json())
+    .then(response => {
+      // takes the response and stores each synonym in an array
+      const onlySyns = response.map(syn => syn.word);
+      // converts the array into a string
+      const synString = onlySyns.join(", ");
+      setSynEng("Synonyms: " + synString);
+    })
+  }, [])
 
   // function is run when clicked
   const handleClick = (event) => {
@@ -34,7 +49,7 @@ const Popup = (props) => {
             'X-RapidAPI-Key': process.env.REACT_APP_API_KEY,
             'X-RapidAPI-Host': 'microsoft-translator-text.p.rapidapi.com'
           },
-          body: `[{"Text":"${def}"}]`
+          body: `[{"Text":"${def}"}, {"Text":"${synEng}"}]`
         };
         return transOptions;
       })
@@ -45,10 +60,15 @@ const Popup = (props) => {
       .then(response => response.json())
       .then(response => {
         const translatedDef = response[0].translations[0].text;
-        // definition set to the translated definition
+        const translatedSyn = response[1].translations[0].text;
+        // definition set to the translated definition and synonym
         setDefinition(translatedDef);
+        setSynTrans(translatedSyn);
       })
-      .catch(err => console.error('error:' + err));
+      .catch(err => {
+        console.error('error:' + err);
+        setDefinition("ERROR");
+      });
   };
 
   // function closes popover
@@ -74,7 +94,7 @@ const Popup = (props) => {
           horizontal: 'center',
         }}
       >
-        <Typography sx={{ p: 2 }}>{definition}</Typography>
+        <Typography sx={{ p: 2 }} component={'span'}>{definition} <br/> {synTrans}</Typography>
       </Popover>
     </div>
   );
