@@ -19,7 +19,7 @@ const styles = theme => ({
     button:{
         justifyContent:'center'
     },
-    languageListForm:{
+    languageListForm:{ 
         margin: '10px'
     }
 })
