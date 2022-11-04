@@ -29,7 +29,10 @@
     80% {
         content: "Bienvenue";
     }
+    90% {
+        content: "Benarrivato";
+   }
     100% {
         content: "Benarrivato";
-  }
+    }
   }

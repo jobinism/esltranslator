@@ -39,7 +39,7 @@ function Navbar() {
   };
 
   return (
-    <AppBar position="absolute">
+    <AppBar position="fixed">
       <Container maxWidth="xl">
         <Toolbar disableGutters>
           <LanguageIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />
