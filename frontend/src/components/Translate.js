@@ -124,7 +124,7 @@ const Translate = () => {
       <br />
       <div className="microphoneIcon">
         <Box 
-        sx={{ display: {xs: "flex", justifyContent: "center", alignContent: 'center'},width: 50, height: 50, backgroundColor: "#1a75d2", borderRadius: 50, boxShadow: '10px 10px 8px #888888;', position: 'fixed'}}>
+        sx={{ display: {xs: "flex", justifyContent: "center", alignContent: 'center'},width: 50, height: 50, backgroundColor: "#FFFFFF",borderColor: '#1a75d2' ,borderStyle: 'solid' , borderRadius: 50, boxShadow: '10px 10px 8px #888888;', position: 'fixed'}}>
 
           <p>{listening ? <MicIcon
           sx={{color: "#00FF00"}}

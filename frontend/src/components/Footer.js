@@ -34,18 +34,18 @@ export default function Footer() {
   return (
       <AppBar position="fixed" color="primary" sx={{ top: 'auto', bottom: 0 }}>
         <Toolbar>
-          <IconButton color="inherit" aria-label="open drawer">
-            <MenuIcon />
+        <IconButton color="inherit">
+            
+            <a href="https://github.com/jobinism/esltranslator"><GitHubIcon sx={{color: '#FFFFFF'}} /></a>
           </IconButton>
-          <StyledFab aria-label="add" sx={{backgroundColor: '#1a75d2', color: '#FFFFFF'}}>
+          <StyledFab 
+          sx={{backgroundColor: '#1a75d2', color: '#FFFFFF'}}
+          >
             <LanguageIcon />
           </StyledFab>
           <Box sx={{ flexGrow: 1 }} />
           <IconButton color="inherit">
-            <GitHubIcon />
-          </IconButton>
-          <IconButton color="inherit">
-            <HelpCenterIcon />
+            <a href="https://www.twinkl.ca/teaching-wiki/esl"><HelpCenterIcon sx={{color: '#FFFFFF'}} /></a>
           </IconButton>
         </Toolbar>
       </AppBar>
