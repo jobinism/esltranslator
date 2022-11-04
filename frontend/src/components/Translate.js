@@ -7,6 +7,10 @@ import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
+import { TextareaAutosize } from '@mui/material';
+import Button from '@mui/material/Button';
+import MicIcon from '@mui/icons-material/Mic';
+import VolumeUpIcon from '@mui/icons-material/VolumeUp';
 const Translate = () => {
 
   // declaring variables needed for speech to text
@@ -103,22 +107,35 @@ const Translate = () => {
           onChange={handleChange}
         >
           <MenuItem value={"zh-HK"}>粵語</MenuItem>
+          <MenuItem value={"es-MX"}>Español</MenuItem>
           <MenuItem value={"fr-FR"}>Français</MenuItem>
           <MenuItem value={"de-DE"}>Deutsch</MenuItem>
           <MenuItem value={"it-IT"}>Italiano</MenuItem>
           <MenuItem value={"ja"}>日本語</MenuItem>
           <MenuItem value={"ko"}>한국어</MenuItem>
           <MenuItem value={"zh-CN"}>普通话</MenuItem>
-          <MenuItem value={"ru"}>русский</MenuItem>
-          <MenuItem value={"es-MX"}>Español</MenuItem>
-          
+          <MenuItem value={"ru"}>русский</MenuItem>          
         </Select>
       </FormControl>
     </Box>
-      <button onClick={() => printText(speechLang)}>Start</button>
-      <textarea id="translate" value={viewTranscript} onChange={(event) => setText(event.target.value)}/>
-      <textarea value={translatedText}>
-      </textarea>
+      <Button onClick={() => printText(speechLang)}><MicIcon /></Button>
+      <TextareaAutosize 
+      id="translate" 
+      value={viewTranscript} 
+      onChange={(event) => setText(event.target.value)}
+      aria-label="empty textarea"
+      minRows={3}
+      placeholder="Translate Here!"
+      style={{ width: 100 }}
+      />
+      <TextareaAutosize 
+      value={translatedText} 
+      aria-label="empty textarea"
+      minRows={3}
+      placeholder="Output here!"
+      style={{ width: 100 }}
+
+      />
       <TextToSpeech text={translatedText}/>
     </div>
   );
