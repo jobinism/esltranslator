@@ -94,7 +94,7 @@ const Popup = (props) => {
           horizontal: 'center',
         }}
         style={{margin: 5}}
-        sx={{display: {xs: 'flex', justifyContent: 'space-around'}}}
+        sx={{display: {xs: 'flex', justifyContent: 'space-around', alignContent: 'center'}}}
       >
         <Typography sx={{ p: 2 }} component={'span'}>{definition} <br/> {synTrans}</Typography>
       </Popover>

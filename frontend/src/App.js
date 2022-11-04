@@ -62,7 +62,6 @@ return (
   
   {/* <ul> {userList} </ul> */}
       <Translate />
-      <br />
 
       <Footer />
 </div >
