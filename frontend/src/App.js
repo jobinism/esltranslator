@@ -1,9 +1,7 @@
-import React from 'react';
 import './App.css';
 import * as React from 'react';
 import Translate from './components/Translate';
 import AccountMenu from './components/AccountMenu';
-import useApplicationData from './Hooks/useEffect';
 import Popup from './components/Popover';
 import { useState, useEffect } from "react";
 import useApplicationData from './Hooks/useEffect';
