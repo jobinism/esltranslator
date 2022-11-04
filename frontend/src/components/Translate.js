@@ -12,6 +12,7 @@ import { TextareaAutosize } from '@mui/material';
 import Button from '@mui/material/Button';
 import MicIcon from '@mui/icons-material/Mic';
 import VolumeUpIcon from '@mui/icons-material/VolumeUp';
+import './Translate.css'
 const Translate = () => {
 
   // declaring variables needed for speech to text
@@ -146,21 +147,22 @@ const Translate = () => {
       value={viewTranscript} 
       onChange={(event) => setText(event.target.value)}
       aria-label="empty textarea"
-      minRows={3}
+      minRows={4}
       placeholder="Translate Here!"
-      style={{ width: 100 }}
+      style={{ width: 150, marginRight: 2 }}
       />
       <TextareaAutosize 
       value={translatedText} 
       aria-label="empty textarea"
-      minRows={3}
+      minRows={4}
       placeholder="Output here!"
-      style={{ width: 100 }}
-
+      style={{ width: 150, marginLeft: 2 }}
       />
       <TextToSpeech text={translatedText}/>
       <br/>
-      <div>{words}</div>
+      <div className='defWordBox'>
+      <div className="definedWords">{words}</div>
+      </div>
     </div>
   );
 };

@@ -10,6 +10,7 @@ import useApplicationData from './Hooks/useEffect';
 import Register from './components/Register';
 import Log from './components/Log';
 import Navbar from './components/Navbar';
+import Footer from './components/Footer';
 
 
 const encodedParams = new URLSearchParams();
@@ -56,6 +57,9 @@ return (
   
   <ul> {userList} </ul>
       <Translate />
+      <br />
+
+      <Footer />
 </div >
 );
 };
