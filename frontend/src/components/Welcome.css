@@ -1,0 +1,35 @@
+  .welcome {
+    text-align: center;
+    margin-top: 100px;
+    color: rgb(56, 116, 255);
+  }
+
+  .welcome::before {
+    content: "Welcome";
+    animation: change 20s infinite;
+    padding-left: 10px;
+  }
+
+  @keyframes change {
+
+    0% {
+        content: "Welcome";
+    }
+
+    20% {
+        content: "Bienvenidos";
+    }
+
+    40% {
+        content: "欢迎";
+    }
+    60% {
+        content: "いらっしゃいませ";
+    }
+    80% {
+        content: "Bienvenue";
+    }
+    100% {
+        content: "Benarrivato";
+  }
+  }
