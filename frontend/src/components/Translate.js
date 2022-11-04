@@ -8,12 +8,18 @@ import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 <<<<<<< HEAD
+<<<<<<< HEAD
 import Popup from './Popover';
 =======
+=======
+>>>>>>> ac6c451 (styled translate component with icons and different text fields)
 import { TextareaAutosize } from '@mui/material';
 import Button from '@mui/material/Button';
 import MicIcon from '@mui/icons-material/Mic';
 import VolumeUpIcon from '@mui/icons-material/VolumeUp';
+<<<<<<< HEAD
+>>>>>>> ac6c451 (styled translate component with icons and different text fields)
+=======
 >>>>>>> ac6c451 (styled translate component with icons and different text fields)
 const Translate = () => {
 
