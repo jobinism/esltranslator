@@ -15,8 +15,9 @@ import AdbIcon from '@mui/icons-material/Adb';
 import LanguageIcon from '@mui/icons-material/Language';
 
 
-const pages = ['My Profile', 'About Us', 'Login'];
-const settings = ['Logout'];
+const pages = ['My Profile', 'About Us'];
+const logout = 'Logout';
+const login = 'Login';
 
 function Navbar() {
   const [anchorElNav, setAnchorElNav] = React.useState(null);

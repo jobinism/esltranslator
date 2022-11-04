@@ -1,0 +1,18 @@
+.definedWords {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  color: blue;
+  text-decoration: underline;
+
+}
+.definedWords:hover {
+  color: rgb(0, 0, 188);
+  cursor: pointer;
+}
+
+.defWordBox {
+  margin-left: 5pc;
+  margin-right: 5pc;
+}
