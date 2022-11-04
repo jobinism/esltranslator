@@ -11,6 +11,7 @@ import Register from './components/Register';
 import Log from './components/Log';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
+import Welcome from './components/Welcome';
 
 
 const encodedParams = new URLSearchParams();
@@ -53,9 +54,13 @@ const App = () => {
 return (
 <div className="App" >
   <Navbar />
-  <h1> Users </h1>
+  {/* <h1> Users </h1> */}
+  <br />
+  <br />
+  <br />
+  <Welcome />
   
-  <ul> {userList} </ul>
+  {/* <ul> {userList} </ul> */}
       <Translate />
       <br />
 
