@@ -67,7 +67,7 @@ const Popup = (props) => {
       })
       .catch(err => {
         console.error('error:' + err);
-        setDefinition("ERROR");
+        setDefinition("Error: No definition found");
       });
   };
 

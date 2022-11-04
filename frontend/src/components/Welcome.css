@@ -1,11 +1,11 @@
   .welcome {
     text-align: center;
     margin-top: 100px;
-    color: rgb(56, 116, 255);
+    color: #1a75d2;
   }
 
   .welcome::before {
-    content: "Welcome";
+    content: " ";
     animation: change 20s infinite;
     padding-left: 10px;
   }
