@@ -121,9 +121,10 @@ const Translate = () => {
 
   return (
     <div>
+      <br />
       <div className="microphoneIcon">
         <Box 
-        sx={{ display: {xs: "flex", justifyContent: "center", alignContent: 'center'},width: 50, height: 50, backgroundColor: "#FFFFF", borderRadius: 50, borderStyle: 'solid', borderColor: '#8500D6', boxShadow: '2px 5px 5px 0px rgba(0,0,0,0.75)'}}>
+        sx={{ display: {xs: "flex", justifyContent: "center", alignContent: 'center'},width: 50, height: 50, backgroundColor: "#1a75d2", borderRadius: 50, boxShadow: '10px 10px 8px #888888;', position: 'fixed'}}>
 
           <p>{listening ? <MicIcon
           sx={{color: "#00FF00"}}
@@ -164,14 +165,14 @@ const Translate = () => {
           onChange={handleChange}
         >
           <MenuItem value={"zh-HK"}>English</MenuItem>
-          <MenuItem value={"es-MX"}>Español</MenuItem>
-          <MenuItem value={"fr-FR"}>Français</MenuItem>
-          <MenuItem value={"de-DE"}>Deutsch</MenuItem>
-          <MenuItem value={"it-IT"}>Italiano</MenuItem>
-          <MenuItem value={"ja"}>日本語</MenuItem>
-          <MenuItem value={"ko"}>한국어</MenuItem>
-          <MenuItem value={"zh-CN"}>普通话</MenuItem>
-          <MenuItem value={"ru"}>русский</MenuItem>          
+          <MenuItem value={"es-MX"}>English</MenuItem>
+          <MenuItem value={"fr-FR"}>English</MenuItem>
+          <MenuItem value={"de-DE"}>English</MenuItem>
+          <MenuItem value={"it-IT"}>English</MenuItem>
+          <MenuItem value={"ja"}>English</MenuItem>
+          <MenuItem value={"ko"}>English</MenuItem>
+          <MenuItem value={"zh-CN"}>English</MenuItem>
+          <MenuItem value={"ru"}>English</MenuItem>          
         </Select>
       </FormControl>
     </div>
@@ -186,18 +187,18 @@ const Translate = () => {
         value={viewTranscript} 
         onChange={(event) => setText(event.target.value)}
         aria-label="multiline"
-        minRows={10}
+        minRows={11}
         placeholder="Translate Here!"
-        style={{ width: 150, marginRight: 2, fontSize: 15  }}
+        style={{ width: 150, marginRight: 2, fontSize: 15, borderColor: '#1a75d2'   }}
         />
       </div>  
       <div className='outputBox'>
         <TextareaAutosize 
         value={translatedText} 
         aria-label="empty textarea"
-        minRows={10}
+        minRows={11}
         placeholder="Output here!"
-        style={{ width: 150, marginLeft: 2, fontSize: 15 }}
+        style={{ width: 150, marginLeft: 2, fontSize: 15, borderColor: '#1a75d2' }}
         />
       </div>  
     </div> 

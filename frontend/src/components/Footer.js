@@ -37,7 +37,7 @@ export default function Footer() {
           <IconButton color="inherit" aria-label="open drawer">
             <MenuIcon />
           </IconButton>
-          <StyledFab color="secondary" aria-label="add">
+          <StyledFab aria-label="add" sx={{backgroundColor: '#1a75d2', color: '#FFFFFF'}}>
             <LanguageIcon />
           </StyledFab>
           <Box sx={{ flexGrow: 1 }} />
