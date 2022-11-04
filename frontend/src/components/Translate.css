@@ -1,14 +1,15 @@
 .definedWords {
   display: flex;
   flex-direction: row;
-  justify-content: space-around;
-  align-items: center;
-  color: blue;
-  text-decoration: underline;
+  justify-content: space-between;
+  color: #1a75d2;
+  font-size: 10;
+
 
 }
 .definedWords:hover {
   color: rgb(0, 0, 188);
+  text-decoration: underline;
   cursor: pointer;
 }
 
