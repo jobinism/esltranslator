@@ -1,6 +1,8 @@
 import axios from 'axios';
 import { useState, useEffect } from "react";
 import * as React from 'react';
+import Button from '@mui/material/Button';
+import VolumeUpIcon from '@mui/icons-material/VolumeUp';
 const TextToSpeech = (props) => {
 
   // setting up the api request data
@@ -50,7 +52,7 @@ const TextToSpeech = (props) => {
   }
 
   return(
-    <button onClick={play}>Play</button>
+    <Button onClick={play}><VolumeUpIcon /></Button>
   );
 
 }
