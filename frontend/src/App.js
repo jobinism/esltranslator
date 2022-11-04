@@ -9,6 +9,7 @@ import useApplicationData from './Hooks/useEffect';
 // import AccountMenu from './components/AccountMenu';
 import Register from './components/Register';
 import Log from './components/Log';
+import Navbar from './components/Navbar';
 
 
 const encodedParams = new URLSearchParams();
@@ -50,6 +51,7 @@ const App = () => {
 ));
 return (
 <div className="App" >
+  <Navbar />
   <h1> Users </h1>
   
   <ul> {userList} </ul>
