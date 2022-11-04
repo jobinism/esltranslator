@@ -1,0 +1,45 @@
+.definedWords {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  color: blue;
+  text-decoration: underline;
+
+}
+.definedWords:hover {
+  color: rgb(0, 0, 188);
+  cursor: pointer;
+}
+
+.defWordBox {
+  margin-left: 5pc;
+  margin-right: 5pc;
+}
+
+.microphoneIcon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.languageDrop {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+  margin-left: 4pc;
+  margin-right: 4pc;
+}
+.speechButtons {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+  align-items: center;
+  margin-left: 3pc;
+  margin-right: 3pc;
+}
+.inputOutput {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}

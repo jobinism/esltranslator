@@ -8,6 +8,14 @@ import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 import Popup from './Popover';
+import { TextareaAutosize } from '@mui/material';
+import Button from '@mui/material/Button';
+import MicIcon from '@mui/icons-material/Mic';
+import VolumeUpIcon from '@mui/icons-material/VolumeUp';
+import './Translate.css'
+import FormHelperText from '@mui/material/FormHelperText';
+
+const age = "English"
 const Translate = () => {
 
   // declaring variables needed for speech to text
@@ -113,8 +121,19 @@ const Translate = () => {
 
   return (
     <div>
-      <p>Microphone: {listening ? 'on' : 'off'}</p>
-      <Box sx={{ minWidth: 20 }}>
+      <br />
+      <div className="microphoneIcon">
+        <Box 
+        sx={{ display: {xs: "flex", justifyContent: "center", alignContent: 'center'},width: 50, height: 50, backgroundColor: "#FFFFFF",borderColor: '#1a75d2' ,borderStyle: 'solid' , borderRadius: 50, boxShadow: '10px 10px 8px #888888;', position: 'fixed'}}>
+
+          <p>{listening ? <MicIcon
+          sx={{color: "#00FF00"}}
+          /> : <MicIcon
+            sx={{color: "red"}}
+            />}</p>
+        </Box>
+      </div>
+    <div className='languageDrop'>
       <FormControl margin='normal' variant='standard'>
         <InputLabel id="lang-label">Language</InputLabel>
         <Select
@@ -125,25 +144,68 @@ const Translate = () => {
           onChange={handleChange}
         >
           <MenuItem value={"zh-HK"}>粵語</MenuItem>
+          <MenuItem value={"es-MX"}>Español</MenuItem>
           <MenuItem value={"fr-FR"}>Français</MenuItem>
           <MenuItem value={"de-DE"}>Deutsch</MenuItem>
           <MenuItem value={"it-IT"}>Italiano</MenuItem>
           <MenuItem value={"ja"}>日本語</MenuItem>
           <MenuItem value={"ko"}>한국어</MenuItem>
           <MenuItem value={"zh-CN"}>普通话</MenuItem>
-          <MenuItem value={"ru"}>русский</MenuItem>
-          <MenuItem value={"es-MX"}>Español</MenuItem>
-          
+          <MenuItem value={"ru"}>русский</MenuItem>          
         </Select>
       </FormControl>
-    </Box>
-      <button onClick={() => printText(speechLang)}>Start</button>
-      <textarea id="translate" value={viewTranscript} onChange={(event) => setText(event.target.value)}/>
-      <textarea value={translatedText}>
-      </textarea>
-      <TextToSpeech text={translatedText}/>
+      <FormControl margin='normal' variant='standard' disabled>
+      <InputLabel id="lang-label">Language</InputLabel>
+
+      <Select
+          labelId="lang-label"
+          id="lang-select"
+          value={speechLang}
+          label="Language"
+          onChange={handleChange}
+        >
+          <MenuItem value={"zh-HK"}>English</MenuItem>
+          <MenuItem value={"es-MX"}>English</MenuItem>
+          <MenuItem value={"fr-FR"}>English</MenuItem>
+          <MenuItem value={"de-DE"}>English</MenuItem>
+          <MenuItem value={"it-IT"}>English</MenuItem>
+          <MenuItem value={"ja"}>English</MenuItem>
+          <MenuItem value={"ko"}>English</MenuItem>
+          <MenuItem value={"zh-CN"}>English</MenuItem>
+          <MenuItem value={"ru"}>English</MenuItem>          
+        </Select>
+      </FormControl>
+    </div>
+    <div className='speechButtons'>
+    <Button onClick={() => printText(speechLang)}><MicIcon /></Button>
+    <TextToSpeech text={translatedText}/>
+    </div>  
+    <div className='inputOutput'>       
+      <div className='inputBox'>
+        <TextareaAutosize 
+        id="translate" 
+        value={viewTranscript} 
+        onChange={(event) => setText(event.target.value)}
+        aria-label="multiline"
+        minRows={11}
+        placeholder="Translate Here!"
+        style={{ width: 150, marginRight: 2, fontSize: 15, borderColor: '#1a75d2'   }}
+        />
+      </div>  
+      <div className='outputBox'>
+        <TextareaAutosize 
+        value={translatedText} 
+        aria-label="empty textarea"
+        minRows={11}
+        placeholder="Output here!"
+        style={{ width: 150, marginLeft: 2, fontSize: 15, borderColor: '#1a75d2' }}
+        />
+      </div>  
+    </div> 
       <br/>
-      <div>{words}</div>
+      <div className='defWordBox'>
+      <div className="definedWords">{words}</div>
+      </div>
     </div>
   );
 };
