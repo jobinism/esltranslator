@@ -67,7 +67,7 @@ const Popup = (props) => {
       })
       .catch(err => {
         console.error('error:' + err);
-        setDefinition("ERROR");
+        setDefinition("Error: No definition found");
       });
   };
 
@@ -93,6 +93,8 @@ const Popup = (props) => {
           vertical: 'bottom',
           horizontal: 'center',
         }}
+        style={{margin: 5}}
+        sx={{display: {xs: 'flex', justifyContent: 'space-around', alignContent: 'center'}}}
       >
         <Typography sx={{ p: 2 }} component={'span'}>{definition} <br/> {synTrans}</Typography>
       </Popover>

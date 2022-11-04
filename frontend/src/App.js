@@ -1,15 +1,15 @@
-import React from 'react';
 import './App.css';
 import Translate from './components/Translate';
 import AccountMenu from './components/AccountMenu';
-import useApplicationData from './Hooks/useEffect';
 import Popup from './components/Popover';
 import { useState, useEffect } from "react";
 // import Translate from './components/translate';
 // import AccountMenu from './components/AccountMenu';
 import Register from './components/Register';
 import Log from './components/Log';
-import WordHistory from './components/WordHistory';
+import Navbar from './components/Navbar';
+import Footer from './components/Footer';
+import Welcome from './components/Welcome';
 
 
 
@@ -23,10 +23,17 @@ const App = () => {
 ));
 return (
 <div className="App" >
-  <h1> Users </h1>
+  <Navbar />
+  {/* <h1> Users </h1> */}
+  <br />
+  <br />
+  <br />
+  <Welcome />
   
-  <ul> {userList} </ul>
-      <WordHistory />
+  {/* <ul> {userList} </ul> */}
+      <Translate />
+
+      <Footer />
 </div >
 );
 };
