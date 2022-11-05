@@ -2,7 +2,8 @@ DROP TABLE IF EXISTS posts CASCADE;
 
 CREATE TABLE posts(
     id SERIAL PRIMARY KEY NOT NULL,
-    title VARCHAR(255) NOT NULL,
-    content TEXT,
+    engWord VARCHAR(255) NOT NULL,
+    transWord VARCHAR(255) NOT NULL,
+    definition TEXT,
     user_id INTEGER REFERENCES users(id)
 );

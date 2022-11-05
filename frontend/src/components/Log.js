@@ -36,7 +36,7 @@ const Log = () => {
   const validate = (event) => {
     event.preventDefault()
     const data = {email, password}
-    getData('/login', data)
+    getData('/', data)
     .then((data) => {
       console.log(data, "successful post request"); // JSON data parsed by `data.json()` call
     });

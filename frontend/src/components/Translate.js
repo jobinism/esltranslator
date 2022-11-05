@@ -201,7 +201,7 @@ const Translate = () => {
         value={viewTranscript} 
         onChange={(event) => setText(event.target.value)}
         aria-label="multiline"
-        minRows={11}
+        minRows={10}
         placeholder="Translate Here!"
         style={{ width: 150, marginRight: 2, fontSize: 15, borderColor: '#1a75d2'   }}
         />
@@ -210,7 +210,7 @@ const Translate = () => {
         <TextareaAutosize 
         value={translatedText} 
         aria-label="empty textarea"
-        minRows={11}
+        minRows={10}
         placeholder="Output here!"
         style={{ width: 150, marginLeft: 2, fontSize: 15, borderColor: '#1a75d2' }}
         />
