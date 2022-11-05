@@ -46,13 +46,16 @@ const Translate = () => {
 
   useEffect(() => {
     if (translatedText) {
+      // converts text into an array
       let phrase = translatedText.split(' ');
       const specialChars = /[ `!@#$%^&*()_+\-=\[\]{};:"\\|,.<>\/?~]/;
       let key = -1;
+      // makes a new array containing an element with each word
       const wordsWithPopover = phrase.map((word) => {
         key += 1;
         const check = specialChars.test(word);
         let updatedWord = word;
+        // checks if there is a special char in the word
         if (check) {
           const length = word.length-1;
           updatedWord = word.slice(0,length)
@@ -63,7 +66,9 @@ const Translate = () => {
           
         );
       });
+
       let poparr = [];
+      // setting up the max number of words per line to 5
       for (let i = 0; i < wordsWithPopover.length; i+=5) {
         const data = (<div className="definedWords">
           {wordsWithPopover[i]}
@@ -75,6 +80,7 @@ const Translate = () => {
         </div>);
         poparr.push(data);
       }
+
       setWords(poparr);
     }
   }, [translatedText])
@@ -91,6 +97,7 @@ const Translate = () => {
       // fetches translation and puts it into translated text
       const url = 'https://microsoft-translator-text.p.rapidapi.com/translate?api-version=3.0&to%5B0%5D=en&textType=plain&profanityAction=NoAction';
       const timer = setTimeout (() => {
+        // fetches the text translation if the user hasn't typed for 0.5 seconds
         fetch(url, textToTranslate)
           .then(response => response.json())
           .then(response => {
@@ -102,6 +109,7 @@ const Translate = () => {
           .catch(err => console.error(err));
       }, 500);
 
+      // clears fetch request if user types within 0.5 seconds
       return () => clearTimeout(timer);
     }
     setNum(prev => prev + 1);

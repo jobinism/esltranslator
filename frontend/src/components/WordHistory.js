@@ -12,6 +12,8 @@ import Cookies from "js-cookie";
 const WordHistory = () => {
   const [wordHistory, setWordHistory] = useState("");
   const [wordHistoryView, setWordHistoryView] = useState();
+  const cookies = new Cookies();
+  cookies.set('user_id', '1', { path: '/' });
   const cookie = Cookies.get('user_id');
   console.log(cookie);
   const options = {
@@ -23,7 +25,6 @@ const WordHistory = () => {
     .then(response => response.json())
     .then(response => {
       setWordHistory(response);
-      console.log(response);
     });
   }, []);
 
