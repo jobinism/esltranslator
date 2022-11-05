@@ -11,6 +11,8 @@ import Log from './components/Log';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import Welcome from './components/Welcome';
+import { BrowserRouter, Route, Switch, Routes } from 'react-router-dom';
+import Home from './Home';
 
 
 
@@ -25,16 +27,17 @@ const App = () => {
 return (
 <div className="App" >
   <Navbar />
-  {/* <h1> Users </h1> */}
   <br />
   <br />
   <br />
-  <Welcome />
-  
-  {/* <ul> {userList} </ul> */}
-      <Translate />
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Home />} />
 
-      <Footer />
+      </Routes>
+    </BrowserRouter>
+
+  <Footer />
 </div >
 );
 };

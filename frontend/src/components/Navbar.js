@@ -13,13 +13,32 @@ import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import AdbIcon from '@mui/icons-material/Adb';
 import LanguageIcon from '@mui/icons-material/Language';
+import {useParams, useNavigation, BrowserRouter, Routes, Route} from 'react-router-dom';
+import { getCookie, setCookie } from '../helpers/cookieHelpers';
 
 
-const pages = ['My Profile', 'About Us'];
+let pages = ['My Profile', 'About Us'];
 const logout = 'Logout';
 const login = 'Login';
+const register = 'Register';
+
+
 
 function Navbar() {
+
+  let loggedIn = getCookie('user_id');
+
+  // if (!loggedIn) {
+  //   pages = ['Login', 'Register', 'About Us']
+  // } else if (loggedIn) {
+  //   pages = ['My Profile', 'About Us', 'Logout']
+  // }
+  // if (!user_id) {
+  //   pages = ['My Profile', 'About Us', 'Login', 'Register'];
+  // } else if (user_id) {
+  //   pages = ['My Profile', 'About Us', 'Logout'];
+  // } 
+
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
 
@@ -72,6 +91,8 @@ function Navbar() {
             >
               <MenuIcon />
             </IconButton>
+            
+            {(!loggedIn) &&
             <Menu
               id="menu-appbar"
               anchorEl={anchorElNav}
@@ -90,12 +111,36 @@ function Navbar() {
                 display: { xs: 'block', md: 'none' },
               }}
             >
-              {pages.map((page) => (
-                <MenuItem key={page} onClick={handleCloseNavMenu}>
-                  <Typography textAlign="center">{page}</Typography>
-                </MenuItem>
-              ))}
+              <MenuItem value={"zh-HK"}>Register</MenuItem>
+              <MenuItem value={"es-MX"}>Login</MenuItem>
+              <MenuItem value={"fr-FR"}>About Us</MenuItem>
             </Menu>
+          }
+            {(loggedIn) &&
+            <Menu
+            id="menu-appbar"
+            anchorEl={anchorElNav}
+            anchorOrigin={{
+              vertical: 'bottom',
+              horizontal: 'left',
+            }}
+            keepMounted
+            transformOrigin={{
+              vertical: 'top',
+              horizontal: 'left',
+            }}
+            open={Boolean(anchorElNav)}
+            onClose={handleCloseNavMenu}
+            sx={{
+              display: { xs: 'block', md: 'none' },
+            }}
+            >
+            <MenuItem value={"/history"}>My Profile</MenuItem>
+            <MenuItem value={"/about"}>About Us</MenuItem>
+            <MenuItem value={"/logout"}>Logout</MenuItem>
+            </Menu>
+
+          }
           </Box>
           <LanguageIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} />
           <Typography
