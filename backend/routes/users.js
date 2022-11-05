@@ -3,7 +3,7 @@ const router = express.Router();
 const {
     getPostsByUsers
 } = require('../helpers/dataHelpers');
-console.log("here");
+
 module.exports = ({
     getUsers,
     getUserByEmail,

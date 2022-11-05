@@ -48,10 +48,37 @@ module.exports = (db) => {
 
   }
 
+  const getUsersWords = (id) => {
+    const query = {
+        text: `SELECT  user_id,engWord, transWord, definition
+        FROM posts
+        WHERE user_id = $1
+        `,
+        values: [id]
+    }
+
+    return db.query(query)
+        .then(result => result.rows)
+        .catch(err => err);
+
+}
+
+const addPost = (engWord, transWord, definition, user_id) => {
+    const query = {
+        text: `INSERT INTO posts (user_id, engWord, transWord, definition) VALUES ($1, $2, $3, $4) RETURNING *` ,
+        values: [user_id, engWord, transWord, definition]
+    }
+
+    return db.query(query)
+        .then(result => result.rows[0])
+        .catch(err => err);
+}
   return {
       getUsers,
       getUserByEmail,
       addUser,
-      getUsersPosts
+      getUsersPosts,
+      getUsersWords,
+      addPost
   };
 };
