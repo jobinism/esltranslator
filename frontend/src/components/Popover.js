@@ -81,7 +81,7 @@ const Popup = (props) => {
 
   return (
     <div>
-      <p onClick={handleClick}>
+      <p onClick={handleClick} class="definedWord">
         {props.word}
       </p>
       <Popover

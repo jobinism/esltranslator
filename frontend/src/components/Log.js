@@ -39,7 +39,8 @@ const Log = () => {
     getData('/', data)
     .then((data) => {
       console.log(data, "successful post request"); // JSON data parsed by `data.json()` call
-    });
+    })
+    .catch(err => console.error(err));
   
     // setError("");
     // onSave(student, interviewer);
