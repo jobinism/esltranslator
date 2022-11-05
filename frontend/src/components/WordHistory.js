@@ -17,7 +17,7 @@ const WordHistory = () => {
   const options = {
     method: 'GET'
   };
-  const url = '/api/posts/1';
+  const url = `/api/posts/${cookie}`;
   useEffect(() => {
     fetch(url, options)
     .then(response => response.json())

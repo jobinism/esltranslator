@@ -1,11 +1,11 @@
 .definedWords {
   display: flex;
   flex-direction: row;
-  justify-content: space-around;
+  justify-content: center;
+  gap: 10px;
   align-items: center;
   color: blue;
-  text-decoration: underline;
-
+  height: 40px;
 }
 .definedWords:hover {
   color: rgb(0, 0, 188);
@@ -13,8 +13,8 @@
 }
 
 .defWordBox {
-  margin-left: 5pc;
-  margin-right: 5pc;
+  display: flex;
+  flex-direction: column;
 }
 
 .microphoneIcon {
@@ -42,4 +42,11 @@
   flex-direction: row;
   justify-content: center;
   align-items: center;
+}
+
+@media screen and (min-width: 1024px) {
+  .defWordBox{
+    flex-direction: row;
+    justify-content: center;
+  }
 }
