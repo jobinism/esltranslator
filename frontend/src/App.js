@@ -15,24 +15,23 @@ import Welcome from './components/Welcome';
 
 const App = () => {
   
-  const {
-      state,
-      dispatch
-  } = useApplicationData();
-    const userList = state.users.map((user) => (<li key={user.id} > {user.first_name} {user.last_name} {user.email} </li>
-));
+  
 return (
 <div className="App" >
   <Navbar />
-  {/* <h1> Users </h1> */}
   <br />
   <br />
   <br />
   <Welcome />
   
-  {/* <ul> {userList} </ul> */}
+  
       <Translate />
-
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
       <Footer />
 </div >
 );

@@ -58,10 +58,24 @@ const Translate = () => {
           updatedWord = word.slice(0,length)
         }
         return (
+          
           <Popup word={word} updatedWord={updatedWord} language={language} key={key}/>
+          
         );
       });
-      setWords(wordsWithPopover);
+      let poparr = [];
+      for (let i = 0; i < wordsWithPopover.length; i+=5) {
+        const data = (<div className="definedWords">
+          {wordsWithPopover[i]}
+          {wordsWithPopover[i+1]}
+          {wordsWithPopover[i+2]}
+          {wordsWithPopover[i+3]}
+          {wordsWithPopover[i+4]}
+          {i+5 < wordsWithPopover.length && <p>&nbsp;</p>}
+        </div>);
+        poparr.push(data);
+      }
+      setWords(poparr);
     }
   }, [translatedText])
   // updates on each change to the transcript (when user is using speech to text)
@@ -204,7 +218,7 @@ const Translate = () => {
     </div> 
       <br/>
       <div className='defWordBox'>
-      <div className="definedWords">{words}</div>
+      {words}
       </div>
     </div>
   );
