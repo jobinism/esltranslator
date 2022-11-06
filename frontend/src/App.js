@@ -26,13 +26,19 @@ const App = () => {
   
 return (
 <div className="App" >
-  <Navbar />
+    <Navbar />
   <br />
   <br />
   <br />
     <BrowserRouter>
       <Routes>
+<<<<<<< HEAD
         <Route path="/" element={<Home id={cookies.user_id}/>} />
+=======
+        <Route path="/" element={<Home />} />
+        <Route path="/register" element={<Register />} />
+        <Route path="/login" element={<Log />} />
+>>>>>>> 87dc0c4 (added navigation features)
       </Routes>
     </BrowserRouter>
   <Footer />
