@@ -36,7 +36,7 @@ const Log = () => {
   const validate = (event) => {
     event.preventDefault()
     const data = {email, password}
-    getData('/', data)
+    getData('/login', data)
     .then((data) => {
       console.log(data, "successful post request"); // JSON data parsed by `data.json()` call
     })
@@ -75,9 +75,10 @@ const Log = () => {
                />
               <FormHelperText />
             </FormControlUnstyled>
+            <br />
             <Button 
             type="submit"
-            sx={{backgroundColor: '#FFFFFF', color: '#1a75d2'}}
+            sx={{backgroundColor: '#FFFFFF', color: '#1a75d2', boxShadow: '2px 2px 4px #000000;'}}
             >Submit</Button>
           </form>
           <br />

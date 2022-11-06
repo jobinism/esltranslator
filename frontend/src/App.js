@@ -15,14 +15,15 @@ import { BrowserRouter, Route, Switch, Routes } from 'react-router-dom';
 import Home from './Home';
 import {useCookies} from "react-cookie"
 import WordHistory from './components/WordHistory';
+import About from './components/About';
 
 
 
 const App = () => {
-  const [cookies, setCookie] = useCookies([]);
-  useEffect(() => {
-    setCookie('user_id', 1, { path: '/' });
-  }, []);
+  // const [cookies, setCookie] = useCookies([]);
+  // useEffect(() => {
+  //   setCookie('user_id', 1, { path: '/' });
+  // }, []);
   
 return (
 <div className="App" >
@@ -32,13 +33,11 @@ return (
   <br />
     <BrowserRouter>
       <Routes>
-<<<<<<< HEAD
-        <Route path="/" element={<Home id={cookies.user_id}/>} />
-=======
         <Route path="/" element={<Home />} />
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Log />} />
->>>>>>> 87dc0c4 (added navigation features)
+        <Route path="/account" element={<WordHistory />} />
+        <Route path="/about" element={<About />} />
       </Routes>
     </BrowserRouter>
   <Footer />

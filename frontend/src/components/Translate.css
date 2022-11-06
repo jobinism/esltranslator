@@ -1,13 +1,8 @@
 .definedWords {
   display: flex;
   flex-direction: row;
-<<<<<<< HEAD
-  justify-content: center;
-  color: #1a75d2;
-=======
   justify-content: space-between;
   color: #116ac2;
->>>>>>> 87dc0c4 (added navigation features)
   font-size: 10;
   gap: 10px;
 

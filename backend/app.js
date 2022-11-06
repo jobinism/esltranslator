@@ -31,8 +31,6 @@ app.post('/login', (req, res) => {
       res.status(401).json({error: 'Incorrect Credentials'})
     }
   })
-
-
 });
 
 module.exports = app;

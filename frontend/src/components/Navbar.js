@@ -13,14 +13,8 @@ import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import AdbIcon from '@mui/icons-material/Adb';
 import LanguageIcon from '@mui/icons-material/Language';
-import {useParams, useNavigation, BrowserRouter, Routes, Route, Link} from 'react-router-dom';
 import { getCookie, setCookie } from '../helpers/cookieHelpers';
 
-
-let pages = ['My Profile', 'About Us'];
-const logout = 'Logout';
-const login = 'Login';
-const register = 'Register';
 
 // const navigate = useNavigation();
 
@@ -29,17 +23,6 @@ const register = 'Register';
 function Navbar() {
 
   let loggedIn = getCookie('user_id');
-
-  // if (!loggedIn) {
-  //   pages = ['Login', 'Register', 'About Us']
-  // } else if (loggedIn) {
-  //   pages = ['My Profile', 'About Us', 'Logout']
-  // }
-  // if (!user_id) {
-  //   pages = ['My Profile', 'About Us', 'Login', 'Register'];
-  // } else if (user_id) {
-  //   pages = ['My Profile', 'About Us', 'Logout'];
-  // } 
 
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
