@@ -7,19 +7,16 @@ import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
 import TableContainer from '@mui/material/TableContainer';
 import TableCell from '@mui/material/TableCell';
-import Cookies from "js-cookie";
+
+
 
 const WordHistory = () => {
   const [wordHistory, setWordHistory] = useState("");
   const [wordHistoryView, setWordHistoryView] = useState();
-  const cookies = new Cookies();
-  cookies.set('user_id', '1', { path: '/' });
-  const cookie = Cookies.get('user_id');
-  console.log(cookie);
   const options = {
     method: 'GET'
   };
-  const url = `/api/posts/${cookie}`;
+  const url = `/api/posts/1`;
   useEffect(() => {
     fetch(url, options)
     .then(response => response.json())
@@ -30,9 +27,11 @@ const WordHistory = () => {
 
   useEffect(() => {
     if(wordHistory) {
+      let num = -1;
       const history = wordHistory.map(word => {
+        num ++;
         return (
-          <WordPost engWord={word.engword} transWord={word.transword} definition={word.definition}/>
+          <WordPost engWord={word.engword} transWord={word.transword} definition={word.definition} key={num}/>
         );
       });
       setWordHistoryView(history);

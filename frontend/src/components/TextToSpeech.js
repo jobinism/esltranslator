@@ -52,7 +52,7 @@ const TextToSpeech = (props) => {
   }
 
   return(
-    <Button onClick={play}><VolumeUpIcon /></Button>
+    <Button onClick={play} key={props.key}><VolumeUpIcon /></Button>
   );
 
 }
