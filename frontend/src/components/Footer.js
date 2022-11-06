@@ -41,7 +41,7 @@ export default function Footer() {
           <StyledFab 
           sx={{backgroundColor: '#1a75d2', color: '#FFFFFF'}}
           >
-            <LanguageIcon />
+            <a href="/"><LanguageIcon style={{color: '#FFFFFF'}} /></a>
           </StyledFab>
           <Box sx={{ flexGrow: 1 }} />
           <IconButton color="inherit">

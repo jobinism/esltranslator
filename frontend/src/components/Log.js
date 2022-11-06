@@ -49,13 +49,16 @@ const Log = () => {
 
 
     return (
-      <Box sx={{backgroundColor: '#ba000d', borderRadius: 7, marginLeft: 5, marginRight: 5, margingTop: 1, filter: 'drop-shadow(0px 2px 8px rgba(0,0,0,0.32))'}}>
+    <div>
+      <br />
+      <br />
+      <Box sx={{backgroundColor: '#116ac2', borderRadius: 10, marginLeft: 5, marginRight: 5, filter: 'drop-shadow(0px 2px 8px rgba(0,0,0,0.32))'}}>
           <br />
-            <h1> Login </h1>
+            <h1 style={{color: '#FFFFFF'}}> Login </h1>
 
           <form onSubmit={validate} autoComplete="off">
             <FormControlUnstyled defaultValue="" required>
-              <FormLabel>Email:</FormLabel>
+              <FormLabel style={{color: '#FFFFFF'}}>Email:</FormLabel>
               <Input 
               sx={{width: 250}}
               onChange={ (event) => setEmail(event.target.value)}
@@ -64,7 +67,7 @@ const Log = () => {
               <FormHelperText />
             </FormControlUnstyled>
             <FormControlUnstyled defaultValue="" required>
-              <FormLabel>Password:</FormLabel>
+              <FormLabel style={{color: '#FFFFFF'}}>Password:</FormLabel>
               <Input
                sx={{width: 225}} 
                onChange={ (event) => setPassword(event.target.value)}
@@ -72,12 +75,18 @@ const Log = () => {
                />
               <FormHelperText />
             </FormControlUnstyled>
-            <button type="submit">Submit</button>
+            <Button 
+            type="submit"
+            sx={{backgroundColor: '#FFFFFF', color: '#1a75d2'}}
+            >Submit</Button>
           </form>
           <br />
           <br />
 
       </Box>
+
+      <h2>Don't have an acount? <a href="/register">Sign up here</a></h2>
+    </div>
     )
 }
 export default Log;

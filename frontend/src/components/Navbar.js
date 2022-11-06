@@ -13,7 +13,7 @@ import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import AdbIcon from '@mui/icons-material/Adb';
 import LanguageIcon from '@mui/icons-material/Language';
-import {useParams, useNavigation, BrowserRouter, Routes, Route} from 'react-router-dom';
+import {useParams, useNavigation, BrowserRouter, Routes, Route, Link} from 'react-router-dom';
 import { getCookie, setCookie } from '../helpers/cookieHelpers';
 
 
@@ -21,6 +21,8 @@ let pages = ['My Profile', 'About Us'];
 const logout = 'Logout';
 const login = 'Login';
 const register = 'Register';
+
+// const navigate = useNavigation();
 
 
 
@@ -111,9 +113,9 @@ function Navbar() {
                 display: { xs: 'block', md: 'none' },
               }}
             >
-              <MenuItem value={"zh-HK"}>Register</MenuItem>
-              <MenuItem value={"es-MX"}>Login</MenuItem>
-              <MenuItem value={"fr-FR"}>About Us</MenuItem>
+              <MenuItem><a href="/register">Register</a></MenuItem>
+              <MenuItem> <a href="/login">Login</a></MenuItem>
+              <MenuItem><a href="/about">About Us</a></MenuItem>
             </Menu>
           }
             {(loggedIn) &&
@@ -135,9 +137,9 @@ function Navbar() {
               display: { xs: 'block', md: 'none' },
             }}
             >
-            <MenuItem value={"/history"}>My Profile</MenuItem>
-            <MenuItem value={"/about"}>About Us</MenuItem>
-            <MenuItem value={"/logout"}>Logout</MenuItem>
+            <MenuItem href="/account" >My Profile</MenuItem>
+            <MenuItem href="/about">About Us</MenuItem>
+            <MenuItem href="/logout">Logout</MenuItem>
             </Menu>
 
           }
@@ -147,7 +149,7 @@ function Navbar() {
             variant="h5"
             noWrap
             component="a"
-            href=""
+            href="/"
             sx={{
               mr: 2,
               display: { xs: 'flex', md: 'none' },
