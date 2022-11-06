@@ -82,9 +82,10 @@ const Register = () => {
               <Input sx={{width: 225}} />
               <FormHelperText />
             </FormControlUnstyled>
+            <br />
             <Button 
             type="submit"
-            sx={{backgroundColor: '#FFFFFF', color: '#1a75d2'}}
+            sx={{backgroundColor: '#FFFFFF', color: '#1a75d2', boxShadow: '2px 2px 4px #000000;'}}
             >Submit</Button>
           </form>
           <br />
