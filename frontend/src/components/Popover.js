@@ -20,8 +20,8 @@ const Popup = (props) => {
     method: 'GET'
   };
 
-  
   React.useEffect(() => {
+    // checks if user is logged in and that the word was clicked
     if (props.id && transWord) {
       axios.post(`http://localhost:3003/api/posts/${props.id}`, {user_id: props.id, transWord: transWord, engWord: props.updatedWord, definition: definition})
       .then(response => console.log(response))
@@ -100,7 +100,6 @@ const Popup = (props) => {
       </p>
       <Popover
         id={id}
-        key = {id}
         open={open}
         anchorEl={anchorEl}
         onClose={handleClose}

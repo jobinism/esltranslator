@@ -30,7 +30,6 @@ return (
   <br />
   <br />
   <br />
-    
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Home id={cookies.user_id}/>} />

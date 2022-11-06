@@ -1,6 +1,7 @@
 import * as React from 'react';
 import TableRow from '@mui/material/TableRow';
 import TableCell from '@mui/material/TableCell';
+import TextToSpeech from "./TextToSpeech";
 
 const WordPost = props => {
   
@@ -14,6 +15,7 @@ const WordPost = props => {
       </TableCell>
       <TableCell align="right">{props.definition}</TableCell>
       <TableCell align="right">{props.engWord}</TableCell>
+      <TableCell align="right"><TextToSpeech text={props.engWord}/></TableCell>
     </TableRow>
   )
 }
