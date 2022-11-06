@@ -1,6 +1,7 @@
 import { Popover, Typography } from '@mui/material';
 import * as React from 'react';
 import LoadingAnimation from './LoadingAnimation';
+import axios from "axios";
 
 const Popup = (props) => {
   // declaring state variables
@@ -8,6 +9,8 @@ const Popup = (props) => {
   const [definition, setDefinition] = React.useState(LoadingAnimation);
   const [synTrans, setSynTrans] = React.useState("");
   const [synEng, setSynEng] = React.useState("");
+  const [transWord, setTransWord] = React.useState("");
+  
   // urls for the fetch requests
   const url =`https://api.dictionaryapi.dev/api/v2/entries/en/${props.updatedWord}`;
   const transUrl = `https://microsoft-translator-text.p.rapidapi.com/translate?api-version=3.0&to%5B0%5D=${props.language}&textType=plain&profanityAction=NoAction`;
@@ -16,6 +19,15 @@ const Popup = (props) => {
   const options = {
     method: 'GET'
   };
+
+  
+  React.useEffect(() => {
+    if (props.id && transWord) {
+      axios.post(`http://localhost:3003/api/posts/${props.id}`, {user_id: props.id, transWord: transWord, engWord: props.updatedWord, definition: definition})
+      .then(response => console.log(response))
+      .catch(err => console.error(err));
+    }
+  }, [transWord])
 
   // retrieves the synonyms of the given word 
   React.useEffect(() => {
@@ -49,7 +61,7 @@ const Popup = (props) => {
             'X-RapidAPI-Key': process.env.REACT_APP_API_KEY,
             'X-RapidAPI-Host': 'microsoft-translator-text.p.rapidapi.com'
           },
-          body: `[{"Text":"${def}"}, {"Text":"${synEng}"}]`
+          body: `[{"Text":"${def}"}, {"Text":"${synEng}"}, {"Text":"${props.updatedWord}"}]`
         };
         return transOptions;
       })
@@ -61,9 +73,11 @@ const Popup = (props) => {
       .then(response => {
         const translatedDef = response[0].translations[0].text;
         const translatedSyn = response[1].translations[0].text;
+        const translatedWord = response[2].translations[0].text;
         // definition set to the translated definition and synonym
         setDefinition(translatedDef);
         setSynTrans(translatedSyn);
+        setTransWord(translatedWord);
       })
       .catch(err => {
         console.error('error:' + err);
@@ -81,11 +95,12 @@ const Popup = (props) => {
 
   return (
     <div>
-      <p onClick={handleClick} class="definedWord">
+      <p onClick={handleClick} className="definedWord">
         {props.word}
       </p>
       <Popover
         id={id}
+        key = {id}
         open={open}
         anchorEl={anchorEl}
         onClose={handleClose}

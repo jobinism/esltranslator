@@ -8,15 +8,15 @@ import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 import Popup from './Popover';
-import { TextareaAutosize } from '@mui/material';
+import { TextareaAutosize, useThemeProps } from '@mui/material';
 import Button from '@mui/material/Button';
 import MicIcon from '@mui/icons-material/Mic';
 import VolumeUpIcon from '@mui/icons-material/VolumeUp';
 import './Translate.css'
 import FormHelperText from '@mui/material/FormHelperText';
 
-const age = "English"
-const Translate = () => {
+
+const Translate = (props) => {
 
   // declaring variables needed for speech to text
   const {
@@ -62,7 +62,7 @@ const Translate = () => {
         }
         return (
           
-          <Popup word={word} updatedWord={updatedWord} language={language} key={key}/>
+          <Popup word={word} updatedWord={updatedWord} language={language} key={key} id={props.id}/>
           
         );
       });
@@ -200,7 +200,7 @@ const Translate = () => {
     </div>
     <div className='speechButtons'>
     <Button onClick={() => printText(speechLang)}><MicIcon /></Button>
-    <TextToSpeech text={translatedText}/>
+    <TextToSpeech text={translatedText} />
     </div>  
     <div className='inputOutput'>       
       <div className='inputBox'>
