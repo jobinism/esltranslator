@@ -16,6 +16,7 @@ import './Translate.css'
 import FormHelperText from '@mui/material/FormHelperText';
 
 
+
 const Translate = (props) => {
 
   // declaring variables needed for speech to text
@@ -67,7 +68,7 @@ const Translate = (props) => {
         );
       });
 
-      let poparr = [];
+      const poparr = [];
       // setting up the max number of words per line to 5
       for (let i = 0; i < wordsWithPopover.length; i+=5) {
         const data = (<div className="definedWords">
@@ -81,6 +82,7 @@ const Translate = (props) => {
         poparr.push(data);
       }
 
+     
       setWords(poparr);
     }
   }, [translatedText])

@@ -11,23 +11,32 @@ import TableCell from '@mui/material/TableCell';
 
 
 const WordHistory = () => {
+
+  // declaring state variables
   const [wordHistory, setWordHistory] = useState("");
   const [wordHistoryView, setWordHistoryView] = useState();
+
+  // setting up the request boiler plate for the api
   const options = {
     method: 'GET'
   };
+
   const url = `/api/posts/1`;
   useEffect(() => {
+    // fetching the user's word history
     fetch(url, options)
     .then(response => response.json())
     .then(response => {
+      // updating the WordHistory
       setWordHistory(response);
     });
   }, []);
 
   useEffect(() => {
+    // checks if there is a word history
     if(wordHistory) {
       let num = -1;
+      // returns an array of each word in a tag
       const history = wordHistory.map(word => {
         num ++;
         return (
@@ -45,6 +54,7 @@ const WordHistory = () => {
           <TableCell>Translated Word</TableCell>
           <TableCell align="right">Definition</TableCell>
           <TableCell align="right">English Word</TableCell>
+          <TableCell align="right"></TableCell>
         </TableRow>
       </TableHead>
       <TableBody>

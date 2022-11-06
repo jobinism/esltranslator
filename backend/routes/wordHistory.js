@@ -5,23 +5,22 @@ module.exports = ({
   getUsersWords,
   addPost
 }) => {
+  // gets the word history of a given user
   router.get('/:id', (req, res) => {
-    console.log(req.params.id);
     getUsersWords(req.params.id)
     .then(posts => res.json(posts))
-    .catch((err) => res.json({
-      error: err.message
-    }));
+    .catch(err => console.error(err));
   });
 
-  router.put('/', (req, res) => {
+  // adds a word into the word history
+  router.post('/:id', (req, res) => {
     const {
       user_id,
       engWord,
       transWord,
       definition
     } = req.body
-    addPost
+    return addPost( engWord, transWord, definition, user_id );
   })
 
   return router;
