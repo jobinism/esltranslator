@@ -8,6 +8,8 @@ import jarret from '../images/jarret.png';
 import simran from '../images/simran.png';
 import './About.css';
 
+
+
 const iconOne = (
   <Paper sx={{ m: 1, borderRadius: 50  }} elevation={6}>
   <Box sx={{ width: 100, height: 100}}>
@@ -79,7 +81,7 @@ export default function About () {
 
       <p>
         The project is open source and available on{' '}
-        <a href="">GitHub</a>
+        <a href="https://github.com/jobinism/esltranslator">GitHub</a>
       </p>
       <br />
       <br />
