@@ -3,13 +3,13 @@ import Welcome from "./components/Welcome";
 import Translate from "./components/Translate";
 
 
-const Home = (props) => {
+const Home = () => {
 
 
   return (
     <div>
       <Welcome />
-      <Translate id={props.id}/>
+      <Translate />
       <br />
     <br />
     </div>

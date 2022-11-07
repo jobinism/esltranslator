@@ -14,49 +14,32 @@ import MenuItem from '@mui/material/MenuItem';
 import AdbIcon from '@mui/icons-material/Adb';
 import LanguageIcon from '@mui/icons-material/Language';
 import {useParams, useNavigation, BrowserRouter, Routes, Route, Link} from 'react-router-dom';
-import { getCookie, setCookie } from '../helpers/cookieHelpers';
-
-
-let pages = ['My Profile', 'About Us'];
-const logout = 'Logout';
-const login = 'Login';
-const register = 'Register';
-
-// const navigate = useNavigation();
-
-
+import { getCookie } from '../helpers/cookieHelpers';
+import axios from 'axios';
+import './Navbar.css'
 
 function Navbar() {
 
   let loggedIn = getCookie('user_id');
 
-  // if (!loggedIn) {
-  //   pages = ['Login', 'Register', 'About Us']
-  // } else if (loggedIn) {
-  //   pages = ['My Profile', 'About Us', 'Logout']
-  // }
-  // if (!user_id) {
-  //   pages = ['My Profile', 'About Us', 'Login', 'Register'];
-  // } else if (user_id) {
-  //   pages = ['My Profile', 'About Us', 'Logout'];
-  // } 
-
   const [anchorElNav, setAnchorElNav] = React.useState(null);
-  const [anchorElUser, setAnchorElUser] = React.useState(null);
+
+  const loggedOut = () => {
+    axios.post('/logout', { } , { withCredentials: true })
+    .then (response => {
+      console.log(response);
+      loggedIn = "";
+      setAnchorElNav(null);
+    })
+    .catch (err => console.error(err));
+  }
 
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
   };
-  const handleOpenUserMenu = (event) => {
-    setAnchorElUser(event.currentTarget);
-  };
-
+  
   const handleCloseNavMenu = () => {
     setAnchorElNav(null);
-  };
-
-  const handleCloseUserMenu = () => {
-    setAnchorElUser(null);
   };
 
   return (
@@ -137,9 +120,10 @@ function Navbar() {
               display: { xs: 'block', md: 'none' },
             }}
             >
-            <MenuItem href="/account" >My Profile</MenuItem>
-            <MenuItem href="/about">About Us</MenuItem>
-            <MenuItem href="/logout">Logout</MenuItem>
+            <MenuItem><a href="/account">My Profile</a></MenuItem>
+            <MenuItem><a href="/history">Word History</a></MenuItem>
+            <MenuItem><a href="/about">About Us</a></MenuItem>
+            <MenuItem onClick={loggedOut}>Logout</MenuItem>
             </Menu>
 
           }

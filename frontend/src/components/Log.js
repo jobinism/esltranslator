@@ -7,6 +7,7 @@ import FormHelperText from '@mui/material/FormHelperText';
 import Box from '@mui/material/Box';
 import { borderRadius } from "@mui/system";
 import { Button } from "@mui/material";
+import { useNavigate } from "react-router-dom";
 
 
 // Example POST method implementation:
@@ -32,18 +33,18 @@ const Log = () => {
 
   const [email, setEmail] = React.useState('');
   const [password, setPassword] = React.useState('');
+  const navigate = useNavigate();
 
   const validate = (event) => {
     event.preventDefault()
     const data = {email, password}
-    getData('/', data)
+    getData('/login', data)
     .then((data) => {
       console.log(data, "successful post request"); // JSON data parsed by `data.json()` call
+      navigate('/');
     })
     .catch(err => console.error(err));
   
-    // setError("");
-    // onSave(student, interviewer);
   };
 
 
@@ -63,6 +64,7 @@ const Log = () => {
               sx={{width: 250}}
               onChange={ (event) => setEmail(event.target.value)}
               value={email}
+              type='email'
               />
               <FormHelperText />
             </FormControlUnstyled>
@@ -72,6 +74,7 @@ const Log = () => {
                sx={{width: 225}} 
                onChange={ (event) => setPassword(event.target.value)}
                value={password}
+               type='password'
                />
               <FormHelperText />
             </FormControlUnstyled>

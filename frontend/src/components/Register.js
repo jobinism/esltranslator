@@ -7,6 +7,7 @@ import FormHelperText from '@mui/material/FormHelperText';
 import Box from '@mui/material/Box';
 import { borderRadius } from "@mui/system";
 import { Button } from "@mui/material";
+import { useNavigate } from "react-router-dom";
 
 
 // Example POST method implementation:
@@ -32,23 +33,26 @@ const Register = () => {
 
   const [firstName, setFirstName] = React.useState('');
   const [lastName, setLastName] = React.useState('');
+  const [email, setEmail] = React.useState('');
+  const [password, setPassword] = React.useState('');
+  const navigate = useNavigate();
   const validate = (event) => {
     event.preventDefault()
 
   const data = { 
-    first_name: 'Jarret',
-    last_name: 'Coyle',
-    email: 'jarretcoyle@gmail.com',
-    password: 'password' }
+    first_name: firstName,
+    last_name: lastName,
+    email: email,
+    password: password }
     postData('/api/users', data)
     .then((data) => {
-      console.log(data, "successful post request"); // JSON data parsed by `data.json()` call
+      console.log(data, "successful post request");
+       // JSON data parsed by `data.json()` call
     });
   
 
     console.log('hello validated')
-    // setError("");
-    // onSave(student, interviewer);
+    navigate('/');
   };
 
 
@@ -64,22 +68,22 @@ const Register = () => {
           <form onSubmit={validate} autoComplete="off">
             <FormControlUnstyled defaultValue="" required>
               <FormLabel style={{color: '#FFFFFF'}}>First Name:</FormLabel>
-              <Input sx={{width: 215}} />
+              <Input sx={{width: 215}} value={firstName} onChange={event => setFirstName(event.target.value)}/>
               <FormHelperText />
             </FormControlUnstyled>
             <FormControlUnstyled defaultValue="" required>
               <FormLabel style={{color: '#FFFFFF'}}>Last Name:</FormLabel>
-              <Input sx={{width: 215}} />
+              <Input sx={{width: 215}} value={lastName} onChange={event => setLastName(event.target.value)}/>
               <FormHelperText />
             </FormControlUnstyled>
             <FormControlUnstyled defaultValue="" required>
               <FormLabel style={{color: '#FFFFFF'}}>Email:</FormLabel>
-              <Input sx={{width: 250}} />
+              <Input sx={{width: 250}} type='email' value={email} onChange={event => setEmail(event.target.value)} />
               <FormHelperText />
             </FormControlUnstyled>
             <FormControlUnstyled defaultValue="" required>
               <FormLabel style={{color: '#FFFFFF'}}>Password:</FormLabel>
-              <Input sx={{width: 225}} />
+              <Input sx={{width: 225}} type='password' value={password} onChange={event => setPassword(event.target.value)}/>
               <FormHelperText />
             </FormControlUnstyled>
             <Button 

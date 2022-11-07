@@ -4,6 +4,7 @@ import LoadingAnimation from './LoadingAnimation';
 import axios from "axios";
 
 const Popup = (props) => {
+  
   // declaring state variables
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [definition, setDefinition] = React.useState(LoadingAnimation);
@@ -19,11 +20,11 @@ const Popup = (props) => {
   const options = {
     method: 'GET'
   };
-
+  const user_id = document.cookie.match("(^|;)\\s*" + "user_id" + "\\s*=\\s*([^;]+)")[2];
   React.useEffect(() => {
     // checks if user is logged in and that the word was clicked
-    if (props.id && transWord) {
-      axios.post(`http://localhost:3003/api/posts/${props.id}`, {user_id: props.id, transWord: transWord, engWord: props.updatedWord, definition: definition})
+    if (user_id && transWord) {
+      axios.post(`http://localhost:3003/api/posts/${user_id}`, {user_id: user_id, transWord: transWord, engWord: props.updatedWord, definition: definition})
       .then(response => console.log(response))
       .catch(err => console.error(err));
     }
@@ -74,7 +75,7 @@ const Popup = (props) => {
         const translatedDef = response[0].translations[0].text;
         const translatedSyn = response[1].translations[0].text;
         const translatedWord = response[2].translations[0].text;
-        // definition set to the translated definition and synonym
+        // setting the translated definition, word, and synonym
         setDefinition(translatedDef);
         setSynTrans(translatedSyn);
         setTransWord(translatedWord);

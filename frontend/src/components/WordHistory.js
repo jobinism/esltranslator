@@ -8,20 +8,18 @@ import TableBody from '@mui/material/TableBody';
 import TableContainer from '@mui/material/TableContainer';
 import TableCell from '@mui/material/TableCell';
 
-
-
 const WordHistory = () => {
 
   // declaring state variables
   const [wordHistory, setWordHistory] = useState("");
-  const [wordHistoryView, setWordHistoryView] = useState();
-
+  const [wordHistoryView, setWordHistoryView] = useState("");
+  const id = document.cookie.match("(^|;)\\s*" + "user_id" + "\\s*=\\s*([^;]+)")[2];
   // setting up the request boiler plate for the api
   const options = {
     method: 'GET'
   };
 
-  const url = `/api/posts/1`;
+  const url = `/api/posts/${id}`;
   useEffect(() => {
     // fetching the user's word history
     fetch(url, options)
@@ -29,7 +27,8 @@ const WordHistory = () => {
     .then(response => {
       // updating the WordHistory
       setWordHistory(response);
-    });
+    })
+    .catch(err => console.error(err));
   }, []);
 
   useEffect(() => {
@@ -45,10 +44,12 @@ const WordHistory = () => {
       });
       setWordHistoryView(history);
     }
-  }, [wordHistory])
+  }, [wordHistory]);
+
   return (
-    <TableContainer component={Paper}>
-    <Table sx={{ minWidth: 650 }} aria-label="simple table">
+    <>
+    {(id) && <TableContainer component={Paper}>
+    <Table sx={{ minWidth: 375 }} aria-label="simple table">
       <TableHead>
         <TableRow>
           <TableCell>Translated Word</TableCell>
@@ -61,7 +62,9 @@ const WordHistory = () => {
         {wordHistoryView}
       </TableBody>
     </Table>
-  </TableContainer>
+  </TableContainer>}
+  {(!id) && <h1>Need to login</h1>}
+  </>
   )
 };
 
