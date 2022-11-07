@@ -20,10 +20,14 @@ function Navbar() {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
 
   const loggedOut = () => {
+    // logs user out
     axios.post('/logout', { } , { withCredentials: true })
     .then (response => {
+      // if user was logged out shows the response
       console.log(response);
+      // changes options of navbar
       loggedIn = "";
+      // closes navbar
       setAnchorElNav(null);
     })
     .catch (err => console.error(err));
@@ -115,9 +119,9 @@ function Navbar() {
               display: { xs: 'block', md: 'none' },
             }}
             >
-            <MenuItem><a href="/account">My Profile</a></MenuItem>
-            <MenuItem><a href="/about">About Us</a></MenuItem>
-            <MenuItem onClick={loggedOut}>Logout</MenuItem>
+            <MenuItem><a href="/account" className='menuItem'>My Profile</a></MenuItem>
+            <MenuItem><a href="/about" className='menuItem'>About Us</a></MenuItem>
+            <MenuItem onClick={loggedOut}><a href="/" className='menuItem'>Logout</a></MenuItem>
             </Menu>
 
           }
