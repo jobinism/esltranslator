@@ -7,18 +7,13 @@ import Footer from './components/Footer';
 import Welcome from './components/Welcome';
 import { BrowserRouter, Route, Switch, Routes } from 'react-router-dom';
 import Home from './Home';
-import {useCookies} from "react-cookie"
 import WordHistory from './components/WordHistory';
+import About from './components/About';
 
 
 
 
 const App = () => {
- 
-  // const [cookies, setCookie] = useCookies([]);
-  // useEffect(() => {
-  //   setCookie('user_id', 1, { path: '/' });
-  // }, []);
   
 return (
 <div className="App" >
