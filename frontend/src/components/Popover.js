@@ -20,7 +20,7 @@ const Popup = (props) => {
   const options = {
     method: 'GET',
     headers: {
-      'X-RapidAPI-Key': REACT_APP_API_KEY,
+      'X-RapidAPI-Key': process.env.REACT_APP_API_KEY,
       'X-RapidAPI-Host': 'wordsapiv1.p.rapidapi.com'
     }
   };
