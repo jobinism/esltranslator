@@ -120,9 +120,9 @@ function Navbar() {
               display: { xs: 'block', md: 'none' },
             }}
             >
-            <MenuItem href="/account" >My Profile</MenuItem>
-            <MenuItem href="/about">About Us</MenuItem>
-            <MenuItem href="/logout">Logout</MenuItem>
+            <a href="/account"><MenuItem  >My Profile</MenuItem></a>
+            <a href="/about"><MenuItem >About Us</MenuItem></a>
+            <a href="/logout"><MenuItem >Logout</MenuItem></a>
             </Menu>
 
           }
