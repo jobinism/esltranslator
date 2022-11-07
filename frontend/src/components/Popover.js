@@ -13,18 +13,23 @@ const Popup = (props) => {
   const [transWord, setTransWord] = React.useState("");
   
   // urls for the fetch requests
-  const url =`https://api.dictionaryapi.dev/api/v2/entries/en/${props.updatedWord}`;
+  const url =`https://wordsapiv1.p.rapidapi.com/words/${props.updatedWord}/definitions`;
   const transUrl = `https://microsoft-translator-text.p.rapidapi.com/translate?api-version=3.0&to%5B0%5D=${props.language}&textType=plain&profanityAction=NoAction`;
   const synUrl = `https://api.datamuse.com/words?rel_syn=${props.updatedWord}&max=3`;
   // setting up fetch request for a word definition
   const options = {
-    method: 'GET'
+    method: 'GET',
+    headers: {
+      'X-RapidAPI-Key': 'b358c0c2e5msh4ac779e4d1c9021p1cf3c9jsnba685ffb13e8',
+      'X-RapidAPI-Host': 'wordsapiv1.p.rapidapi.com'
+    }
   };
-  const user_id = document.cookie.match("(^|;)\\s*" + "user_id" + "\\s*=\\s*([^;]+)")[2];
+  const user_id = document.cookie.match("(^|;)\\s*" + "user_id" + "\\s*=\\s*([^;]+)");
   React.useEffect(() => {
     // checks if user is logged in and that the word was clicked
     if (user_id && transWord) {
-      axios.post(`http://localhost:3003/api/posts/${user_id}`, {user_id: user_id, transWord: transWord, engWord: props.updatedWord, definition: definition})
+      const id = user_id[2];
+      axios.post(`http://localhost:3003/api/posts/${id}`, {user_id: id, transWord: transWord, engWord: props.updatedWord, definition: definition})
       .then(response => console.log(response))
       .catch(err => console.error(err));
     }
@@ -33,7 +38,7 @@ const Popup = (props) => {
   // retrieves the synonyms of the given word 
   React.useEffect(() => {
     // fetches synonyms
-    fetch(synUrl, options)
+    fetch(synUrl)
     .then((response) => response.json())
     .then(response => {
       // takes the response and stores each synonym in an array
@@ -42,10 +47,12 @@ const Popup = (props) => {
       const synString = onlySyns.join(", ");
       setSynEng("Synonyms: " + synString);
     })
+    
   }, [])
 
   // function is run when clicked
   const handleClick = (event) => {
+    
     // sets the popover anchor to the current element
     setAnchorEl(event.currentTarget);
       // retrieving the definition of the word
@@ -53,7 +60,7 @@ const Popup = (props) => {
       // convert the data retrieved in a json
       .then(res => res.json())
       .then(json => {
-        const def = json[0].meanings[0].definitions[0].definition;
+        const def = json.definitions[0].definition;
         // setting up the fetch request to translate the definition
         const transOptions= {
           method: 'POST',
