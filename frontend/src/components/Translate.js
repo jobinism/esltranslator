@@ -230,6 +230,9 @@ const Translate = () => {
       <div className='defWordBox'>
       {words}
       </div>
+      <br />
+      <br />
+      <br />
     </div>
   );
 };
