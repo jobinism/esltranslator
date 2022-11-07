@@ -11,9 +11,7 @@ import Popup from './Popover';
 import { TextareaAutosize } from '@mui/material';
 import Button from '@mui/material/Button';
 import MicIcon from '@mui/icons-material/Mic';
-import VolumeUpIcon from '@mui/icons-material/VolumeUp';
 import './Translate.css'
-import FormHelperText from '@mui/material/FormHelperText';
 
 const Translate = () => {
 
