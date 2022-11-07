@@ -41,11 +41,11 @@ export default function Footer() {
           <StyledFab 
           sx={{backgroundColor: '#1a75d2', color: '#FFFFFF'}}
           >
-            <a href="/"><LanguageIcon style={{color: '#FFFFFF'}} /></a>
+            <a href="/"><LanguageIcon style={{display :{xs: 'flex', justifyContent: 'center', alignContent: 'center'}, color: '#FFFFFF'}} /></a>
           </StyledFab>
           <Box sx={{ flexGrow: 1 }} />
           <IconButton color="inherit">
-            <a href="https://www.twinkl.ca/teaching-wiki/esl"><HelpCenterIcon sx={{color: '#FFFFFF'}} /></a>
+            <a href="https://www.twinkl.ca/teaching-wiki/esl"><HelpCenterIcon sx={{ color: '#FFFFFF'}} /></a>
           </IconButton>
         </Toolbar>
       </AppBar>

@@ -15,6 +15,10 @@ import WordHistory from './components/WordHistory';
 
 const App = () => {
  
+  // const [cookies, setCookie] = useCookies([]);
+  // useEffect(() => {
+  //   setCookie('user_id', 1, { path: '/' });
+  // }, []);
   
 return (
 <div className="App" >
@@ -27,7 +31,8 @@ return (
         <Route path="/" element={<Home />} />
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Log />} />
-        <Route path="/history" element={<WordHistory />} />
+        <Route path="/account" element={<WordHistory />} />
+        <Route path="/about" element={<About />} />
       </Routes>
     </BrowserRouter>
   <Footer />

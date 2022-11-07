@@ -1,0 +1,14 @@
+.aboutUs {
+display: flex;
+flex-direction: column;
+justify-content: space-around;
+align-items: center;
+margin-left: 1pc;
+margin-right: 1pc;
+
+color: #1a75d2
+}
+
+h5 {
+  color: #1a75d2;
+}
