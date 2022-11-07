@@ -7,13 +7,8 @@ import Typography from '@mui/material/Typography';
 import Menu from '@mui/material/Menu';
 import MenuIcon from '@mui/icons-material/Menu';
 import Container from '@mui/material/Container';
-import Avatar from '@mui/material/Avatar';
-import Button from '@mui/material/Button';
-import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
-import AdbIcon from '@mui/icons-material/Adb';
 import LanguageIcon from '@mui/icons-material/Language';
-import {useParams, useNavigation, BrowserRouter, Routes, Route, Link} from 'react-router-dom';
 import { getCookie } from '../helpers/cookieHelpers';
 import axios from 'axios';
 import './Navbar.css'
@@ -96,9 +91,9 @@ function Navbar() {
                 display: { xs: 'block', md: 'none' },
               }}
             >
-              <MenuItem><a href="/register">Register</a></MenuItem>
-              <MenuItem> <a href="/login">Login</a></MenuItem>
-              <MenuItem><a href="/about">About Us</a></MenuItem>
+              <MenuItem><a href="/register" className='menuItem'>Register</a></MenuItem>
+              <MenuItem> <a href="/login" className='menuItem'>Login</a></MenuItem>
+              <MenuItem><a href="/about" className='menuItem'>About Us</a></MenuItem>
             </Menu>
           }
             {(loggedIn) &&
@@ -121,7 +116,6 @@ function Navbar() {
             }}
             >
             <MenuItem><a href="/account">My Profile</a></MenuItem>
-            <MenuItem><a href="/history">Word History</a></MenuItem>
             <MenuItem><a href="/about">About Us</a></MenuItem>
             <MenuItem onClick={loggedOut}>Logout</MenuItem>
             </Menu>
