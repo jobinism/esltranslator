@@ -7,6 +7,7 @@ import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
 import TableContainer from '@mui/material/TableContainer';
 import TableCell from '@mui/material/TableCell';
+import './Welcome.css'
 
 const WordHistory = () => {
 
@@ -47,24 +48,30 @@ const WordHistory = () => {
   }, [wordHistory]);
 
   return (
-    <>
+    <div className="historyBody">
+    <h1>My Word History</h1>
     {(id) && <TableContainer component={Paper}>
     <Table sx={{ minWidth: 375 }} aria-label="simple table">
       <TableHead>
         <TableRow>
-          <TableCell>Translated Word</TableCell>
-          <TableCell align="right">Definition</TableCell>
-          <TableCell align="right">English Word</TableCell>
+          <TableCell><b>Translated Word</b></TableCell>
+          <TableCell align="right"><b>Definition</b></TableCell>
+          <TableCell align="right"><b>English Word</b></TableCell>
           <TableCell align="right"></TableCell>
         </TableRow>
       </TableHead>
-      <TableBody>
+      <TableBody style={{color: '#1a75d2' }}>
         {wordHistoryView}
       </TableBody>
     </Table>
   </TableContainer>}
   {(!id) && <h1>Need to login</h1>}
-  </>
+  <br />
+  <br />
+  <br />
+  <br />
+
+  </div>
   )
 };
 
