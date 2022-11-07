@@ -5,7 +5,6 @@ const logger = require('morgan');
 const db = require('./db');
 const dbHelpers = require('./helpers/dbHelpers')(db);
 const cors = require('cors');
-const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
 const historyRouter = require('./routes/wordHistory');
 const logoutRouter = require('./routes/logout');
