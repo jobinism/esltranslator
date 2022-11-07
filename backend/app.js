@@ -8,6 +8,7 @@ const cors = require('cors');
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
 const historyRouter = require('./routes/wordHistory');
+const logoutRouter = require('./routes/logout');
 const app = express();
 
 app.use(cors());
@@ -16,9 +17,10 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
-app.use('/', indexRouter);
+app.use('/logout', logoutRouter);
 app.use('/api/users', usersRouter(dbHelpers));
 app.use('/api/posts', historyRouter(dbHelpers));
+
 app.post('/login', (req, res) => {
   const email = req.body.email
   const password = req.body.password

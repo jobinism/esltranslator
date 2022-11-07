@@ -1,16 +1,10 @@
 import './App.css';
-import Translate from './components/Translate';
-import AccountMenu from './components/AccountMenu';
-import Popup from './components/Popover';
-// import Translate from './components/translate';
-// import AccountMenu from './components/AccountMenu';
 import Register from './components/Register';
 import Log from './components/Log';
 import Navbar from './components/Navbar';
 import * as React from 'react';
 import Footer from './components/Footer';
 import Welcome from './components/Welcome';
-import { useState, useEffect } from "react";
 import { BrowserRouter, Route, Switch, Routes } from 'react-router-dom';
 import Home from './Home';
 import {useCookies} from "react-cookie"
@@ -18,11 +12,9 @@ import WordHistory from './components/WordHistory';
 
 
 
+
 const App = () => {
-  const [cookies, setCookie] = useCookies([]);
-  useEffect(() => {
-    setCookie('user_id', 1, { path: '/' });
-  }, []);
+ 
   
 return (
 <div className="App" >
@@ -32,13 +24,10 @@ return (
   <br />
     <BrowserRouter>
       <Routes>
-<<<<<<< HEAD
-        <Route path="/" element={<Home id={cookies.user_id}/>} />
-=======
         <Route path="/" element={<Home />} />
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Log />} />
->>>>>>> 87dc0c4 (added navigation features)
+        <Route path="/history" element={<WordHistory />} />
       </Routes>
     </BrowserRouter>
   <Footer />

@@ -8,16 +8,14 @@ import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 import Popup from './Popover';
-import { TextareaAutosize, useThemeProps } from '@mui/material';
+import { TextareaAutosize } from '@mui/material';
 import Button from '@mui/material/Button';
 import MicIcon from '@mui/icons-material/Mic';
 import VolumeUpIcon from '@mui/icons-material/VolumeUp';
 import './Translate.css'
 import FormHelperText from '@mui/material/FormHelperText';
 
-
-
-const Translate = (props) => {
+const Translate = () => {
 
   // declaring variables needed for speech to text
   const {
@@ -63,7 +61,7 @@ const Translate = (props) => {
         }
         return (
           
-          <Popup word={word} updatedWord={updatedWord} language={language} key={key} id={props.id}/>
+          <Popup word={word} updatedWord={updatedWord} language={language} key={key} />
           
         );
       });
@@ -146,6 +144,7 @@ const Translate = (props) => {
   return (
     <div>
       <br />
+      {/*tells the user when the microphone is listening*/}
       <div className="microphoneIcon">
         <Box 
         sx={{ display: {xs: "flex", justifyContent: "center", alignContent: 'center'},width: 50, height: 50, backgroundColor: "#FFFFFF",borderColor: '#1a75d2' ,borderStyle: 'solid' , borderRadius: 50, boxShadow: '10px 10px 8px #888888;', position: 'fixed'}}>
@@ -157,6 +156,7 @@ const Translate = (props) => {
             />}</p>
         </Box>
       </div>
+    {/* Drop down list of languages to set the language to listen for with speech to text */}
     <div className='languageDrop'>
       <FormControl margin='normal' variant='standard'>
         <InputLabel id="lang-label">Language</InputLabel>
