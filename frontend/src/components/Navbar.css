@@ -1,3 +1,10 @@
 .menuItem {
   all:unset;
 }
+
+.eslLogo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+}
