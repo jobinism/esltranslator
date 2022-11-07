@@ -20,6 +20,7 @@ import SearchIcon from '@mui/icons-material/Search';
 import LanguageIcon from '@mui/icons-material/Language';
 import GitHubIcon from '@mui/icons-material/GitHub';
 import HelpCenterIcon from '@mui/icons-material/HelpCenter';
+import './Navbar.css'
 
 const StyledFab = styled(Fab)({
   position: 'absolute',
@@ -41,7 +42,7 @@ export default function Footer() {
           <StyledFab 
           sx={{backgroundColor: '#1a75d2', color: '#FFFFFF'}}
           >
-            <a href="/"><LanguageIcon style={{display :{xs: 'flex', justifyContent: 'center', alignContent: 'center'}, color: '#FFFFFF'}} /></a>
+            <a href="/"><div className='eslLogo'><LanguageIcon style={{color: '#FFFFFF'}} /></div></a>
           </StyledFab>
           <Box sx={{ flexGrow: 1 }} />
           <IconButton color="inherit">
