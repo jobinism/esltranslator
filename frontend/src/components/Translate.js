@@ -145,7 +145,7 @@ const Translate = () => {
       {/*tells the user when the microphone is listening*/}
       <div className="microphoneIcon">
         <Box 
-        sx={{ display: {xs: "flex", justifyContent: "center", alignContent: 'center'},width: 50, height: 50, backgroundColor: "#FFFFFF",borderColor: '#1a75d2' ,borderStyle: 'solid' , borderRadius: 50, boxShadow: '10px 10px 8px #888888;', position: 'fixed'}}>
+        sx={{ display: {xs: "flex", justifyContent: "center", alignContent: 'center'},width: 50, height: 50, backgroundColor: "#FFFFFF",borderColor: '#1a75d2' ,borderStyle: 'solid' , borderRadius: 50, boxShadow: '10px 10px 8px #888888;', position: 'absolute'}}>
 
           <p>{listening ? <MicIcon
           sx={{color: "#00FF00"}}
@@ -209,18 +209,18 @@ const Translate = () => {
         value={viewTranscript} 
         onChange={(event) => setText(event.target.value)}
         aria-label="multiline"
-        minRows={10}
+        minRows={11}
         placeholder="Translate Here!"
-        style={{ width: 150, marginRight: 2, fontSize: 15, borderColor: '#1a75d2'   }}
+        style={{ width: 150, marginRight: 2, fontSize: 17, borderColor: '#1a75d2'   }}
         />
       </div>  
       <div className='outputBox'>
         <TextareaAutosize 
         value={translatedText} 
         aria-label="empty textarea"
-        minRows={10}
+        minRows={11}
         placeholder="Output here!"
-        style={{ width: 150, marginLeft: 2, fontSize: 15, borderColor: '#1a75d2' }}
+        style={{ width: 150, marginLeft: 2, fontSize: 17, borderColor: '#1a75d2' }}
         />
       </div>  
     </div> 
