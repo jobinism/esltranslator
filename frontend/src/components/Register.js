@@ -44,7 +44,7 @@ const Register = () => {
     password: password }
     postData('/api/users', data)
     .then((data) => {
-      console.log(data, "successful post request");
+      console.log(data);
        // JSON data parsed by `data.json()` call
     });
   
