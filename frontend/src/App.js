@@ -3,16 +3,21 @@ import Register from './components/Register';
 import Log from './components/Log';
 import Navbar from './components/Navbar';
 import * as React from 'react';
+import ReactDOM from 'react-dom'
 import Footer from './components/Footer';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Home from './Home';
 import WordHistory from './components/WordHistory';
 import About from './components/About';
+import { useEffect } from 'react';
 
 
 
 
 const App = () => {
+  useEffect(() => {
+    document.title = "Easy English"
+  }, [])
   
 return (
 <div className="App" >

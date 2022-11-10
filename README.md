@@ -1,5 +1,5 @@
 # ESLtranslator
-ESLtranslator is an easy and intuitive way for the user to learn english words and phrases by inputting it in their native language.
+ESLtranslator is an easy and intuitive way for the user to learn english words and phrases by inputting them in their native language.
 ## Dependencies
 - Axios
 - Express
